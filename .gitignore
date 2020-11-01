@@ -1,0 +1,15 @@
+# python
+
+__pycache__
+*.pyc
+
+# virtualenv
+
+bin
+lib
+pyvenv.cfg
+
+# others
+
+.vscode
+share/kivy-examples
