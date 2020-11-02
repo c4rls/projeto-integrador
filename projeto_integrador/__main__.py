@@ -1,3 +1,4 @@
+from gutendex import search_books
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import ObjectProperty
@@ -10,20 +11,20 @@ class ScreenRoot(BoxLayout):
     books_list = ObjectProperty(None)
 
     def getBooks(self):
-        books = []
         terms = self.search_box.ids.search_input.text.strip()
         if not terms:
             return
 
         self.books_list.ids.books_list.clear_widgets()
-        for i in range(5):
-            book = Book(title='Quincas Borba', authors='Machado de Assis',
-                        link='https://link.com/ldi92kleh')
-
-            books.append(book)
+        books = search_books(terms)
 
         for book in books:
-            self.books_list.ids.books_list.add_widget(book)
+            authors = ' - '.join([x.name for x in book.authors])
+            link = book.formats['application/epub+zip'] if book.epub_is_avaliable(
+            ) else 'Não disponível'
+
+            book_widget = Book(title=book.title, authors=authors, link=link)
+            self.books_list.ids.books_list.add_widget(book_widget)
 
         self.search_box.ids.search_input.text = ''
         self.books_list.ids.books_header.found_books = len(books)
