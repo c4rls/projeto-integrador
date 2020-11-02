@@ -1,1 +1,150 @@
 #:kivy 1.11.1
+
+<ScreenRoot>:
+    canvas:
+        Color:
+            rgb: 0.95, 0.95, 0.95
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Widget:
+        size_hint_x: 0.05 # 5% of width
+    BoxLayout: # 90% of width
+        canvas:
+            Color:
+                rgb: 0, 0, 1
+            Line:
+                width: 0.000001
+                rectangle: self.x, self.y, self.width, self.height
+
+        orientation: 'vertical'
+        Widget:
+            size_hint_y: None
+            height: 20
+        Header:
+        Widget:
+            size_hint_y: None
+            height: 20
+        SearchBox:
+        BooksList:
+    Widget:
+        size_hint_x: 0.05 # 5% of width
+
+
+<Header@BoxLayout>:
+    size_hint_y: None
+    height: 50
+    canvas:
+        Color:
+            rgb: 1, 0, 0
+        Line:
+            width: 0.000001
+            rectangle: self.x, self.y, self.width, self.height
+    Label:
+        text: 'Projeto Integrador'
+        color: 0, 0, 0, 1
+        font_size: 30
+
+
+<SearchBox@BoxLayout>:
+    size_hint_y: None
+    height: 40
+    orientation: 'horizontal'
+    spacing: 5
+    canvas:
+        Color:
+            rgb: 0, 1, 0
+        Line:
+            width: 0.000001
+            rectangle: self.x, self.y, self.width, self.height
+
+    TextInput:
+        hint_text: 'Termos da pesquisa'
+        font_size: 17
+        text_size: self.size
+        valign: 'middle'
+    Button:
+        text: 'Buscar'
+        size_hint_x: None
+        width: '100dp'
+
+<BooksList@BoxLayout>:
+    orientation: 'vertical'
+    canvas:
+        Color:
+            rgb: 0, 1, 1
+        Line:
+            width: 0.000001
+            rectangle: self.x, self.y, self.width, self.height
+
+    BooksListHeader:
+    ScrollView:
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 8
+            Book:
+            Book:
+            Book:
+            Book:
+            Book:
+
+<BooksListHeader@BoxLayout>:
+    orientation: 'vertical'
+    padding: 10
+    size_hint_y: None
+    height: 80
+    spacing: 5
+    canvas:
+        Color:
+            rgb: 1, 0, 1
+        Line:
+            width: 0.000001
+            rectangle: self.x, self.y, self.width, self.height
+    Label:
+        size_hint_y: None
+        height: 30
+        text: 'Resultados'
+        color: 0, 0, 0, 1
+        font_size: 23
+        text_size: self.size
+        halign: 'left'
+    Label:
+        text: '5 livros encontrados'
+        color: 0, 0, 0, 1
+        font_size: 16
+        text_size: self.size
+        halign: 'left'
+
+<Book@BoxLayout>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: 100
+    padding: 10
+    canvas:
+        Color:
+            rgb: 0.4, 0.4, 0.4
+        Line:
+            width: 1
+            rectangle: self.x, self.y, self.width, self.height
+    BookField:
+        label_content: 'Título'
+        text_content: 'Quincas Borba'
+    BookField:
+        label_content: 'Autores'
+        text_content: 'Machado de Assis'
+    BookField:
+        label_content: 'Link'
+        text_content: 'https://link.io/ka3l2jv'
+
+<BookField@Label>:
+    label_content: ''
+    text_content: ''
+
+    text: self.label_content + ': ' + self.text_content
+    color: 0, 0, 0, 1
+    text_size: self.size
+    font_size: 16
+    halign: 'left'
