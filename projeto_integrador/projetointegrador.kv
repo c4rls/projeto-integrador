@@ -1,6 +1,8 @@
 #:kivy 1.11.1
 
 <ScreenRoot>:
+    search_box: search_box
+    books_list: books_list
     canvas:
         Color:
             rgb: 0.95, 0.95, 0.95
@@ -11,13 +13,6 @@
     Widget:
         size_hint_x: 0.05 # 5% of width
     BoxLayout: # 90% of width
-        canvas:
-            Color:
-                rgb: 0, 0, 1
-            Line:
-                width: 0.000001
-                rectangle: self.x, self.y, self.width, self.height
-
         orientation: 'vertical'
         Widget:
             size_hint_y: None
@@ -27,7 +22,9 @@
             size_hint_y: None
             height: 20
         SearchBox:
+            id: search_box
         BooksList:
+            id: books_list
     Widget:
         size_hint_x: 0.05 # 5% of width
 
@@ -35,12 +32,6 @@
 <Header@BoxLayout>:
     size_hint_y: None
     height: 50
-    canvas:
-        Color:
-            rgb: 1, 0, 0
-        Line:
-            width: 0.000001
-            rectangle: self.x, self.y, self.width, self.height
     Label:
         text: 'Projeto Integrador'
         color: 0, 0, 0, 1
@@ -52,14 +43,9 @@
     height: 40
     orientation: 'horizontal'
     spacing: 5
-    canvas:
-        Color:
-            rgb: 0, 1, 0
-        Line:
-            width: 0.000001
-            rectangle: self.x, self.y, self.width, self.height
 
     TextInput:
+        id: search_input
         hint_text: 'Termos da pesquisa'
         font_size: 17
         text_size: self.size
@@ -68,28 +54,20 @@
         text: 'Buscar'
         size_hint_x: None
         width: '100dp'
+        on_release: root.parent.parent.getBooks() # screen root
 
 <BooksList@BoxLayout>:
     orientation: 'vertical'
-    canvas:
-        Color:
-            rgb: 0, 1, 1
-        Line:
-            width: 0.000001
-            rectangle: self.x, self.y, self.width, self.height
 
     BooksListHeader:
+        id: books_header
     ScrollView:
         BoxLayout:
+            id: books_list
             orientation: 'vertical'
             size_hint_y: None
             height: self.minimum_height
             spacing: 8
-            Book:
-            Book:
-            Book:
-            Book:
-            Book:
 
 <BooksListHeader@BoxLayout>:
     orientation: 'vertical'
@@ -97,12 +75,9 @@
     size_hint_y: None
     height: 80
     spacing: 5
-    canvas:
-        Color:
-            rgb: 1, 0, 1
-        Line:
-            width: 0.000001
-            rectangle: self.x, self.y, self.width, self.height
+
+    found_books: 0
+
     Label:
         size_hint_y: None
         height: 30
@@ -112,17 +87,22 @@
         text_size: self.size
         halign: 'left'
     Label:
-        text: '5 livros encontrados'
+        text: str(root.found_books) + ' livros encontrados'
         color: 0, 0, 0, 1
         font_size: 16
         text_size: self.size
         halign: 'left'
 
-<Book@BoxLayout>:
+<Book>:
     orientation: 'vertical'
     size_hint_y: None
     height: 100
     padding: 10
+
+    title_content: ''
+    authors_content: ''
+    link_content: ''
+
     canvas:
         Color:
             rgb: 0.4, 0.4, 0.4
@@ -131,19 +111,19 @@
             rectangle: self.x, self.y, self.width, self.height
     BookField:
         label_content: 'Título'
-        text_content: 'Quincas Borba'
+        text_content: str(root.title_content)
     BookField:
         label_content: 'Autores'
-        text_content: 'Machado de Assis'
+        text_content: str(root.authors_content)
     BookField:
         label_content: 'Link'
-        text_content: 'https://link.io/ka3l2jv'
+        text_content: str(root.link_content)
 
 <BookField@Label>:
     label_content: ''
     text_content: ''
 
-    text: self.label_content + ': ' + self.text_content
+    text: str(self.label_content) + ': ' + str(self.text_content)
     color: 0, 0, 0, 1
     text_size: self.size
     font_size: 16
