@@ -13,3 +13,5 @@ pyvenv.cfg
 
 .vscode
 share/kivy-examples
+venv
+.idea
