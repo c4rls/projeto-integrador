@@ -15,3 +15,5 @@ pyvenv.cfg
 share/kivy-examples
 venv
 .idea
+.buildozer
+build

@@ -14,7 +14,7 @@
   - ### 6: Executar o comando 'virtualenv .' para criar um ambiente virtual isolado
   - ### 7: Executar o arquivo de ativação do ambiente virtual, que está localizado em './bin/activate'. Essa etapa deve ser feita toda vez que se for trabalhar no projeto.
   - ### 8: Rodar o comando 'pip install -r requirements.txt' para instalar as dependências
-  - ### 9: Por fim, o comando 'python projeto_integrador' executa o projeto
+  - ### 9: Por fim, o comando 'python projeto_integrador/main.py' executa o projeto
 
 ## Para o PyCharm
 
@@ -30,4 +30,4 @@
   - ### 10: Na opção 'Base Interpreter', selecionar a versão mais recente do python 3
   - ### 11: Selecionar o ambiente que acabou de ser criado e deixar as outras opções como estão e clicar em Ok. Na janela seguinte clicar em Ok
   - ### 12: No terminal do Pycharm, rodar o comando 'pip install -r requirements.txt'
-  - ### 13: Para rodar o projeto basta executar o arquivo 'projeto_integrador/\_\_main\_\_.py'
+  - ### 13: Para rodar o projeto basta executar o arquivo 'projeto_integrador/main.py'

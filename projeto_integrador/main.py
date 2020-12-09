@@ -5,6 +5,8 @@ from kivy.properties import ObjectProperty
 import kivy
 kivy.require('1.11.1')
 
+__version__ = '0.0.1'
+
 
 class ScreenRoot(BoxLayout):
     search_box = ObjectProperty(None)
