@@ -2,6 +2,10 @@
 
 # ⚡️ Configuração do Ambiente
 
+### Esse projeto utiliza o [Buildozer](https://github.com/kivy/buildozer) para empacotar o aplicativo para Android/IOS. No entanto, é necessário possuir um sistema Linux ou OSX para realizar esse processo. Se você possui um desses sistemas, acesse a [documentação do buildozer](https://buildozer.readthedocs.io/) e realize a instalação das dependências necessárias. O buildozer será instalado nos passos seguintes com o pip. 
+
+### Caso não tenha acesso a uma máquina com Linux/OSX, pode tentar uma máquina virtual com o [VirtualBox](https://www.virtualbox.org/). Se não puder instalar o Buildozer, não será possível empacotar ou executar o aplicativo em dispositivos mobile, mas ainda será possível desenvolver e executá-lo em seu desktop.
+
 ## Para qualquer editor
 
 ### Os passos a seguir devem ser feitos no terminal
@@ -31,3 +35,8 @@
   - ### 11: Selecionar o ambiente que acabou de ser criado e deixar as outras opções como estão e clicar em Ok. Na janela seguinte clicar em Ok
   - ### 12: No terminal do Pycharm, rodar o comando 'pip install -r requirements.txt'
   - ### 13: Para rodar o projeto basta executar o arquivo 'projeto_integrador/main.py'
+
+## Build
+
+  - ### Verifique a [documentação](https://buildozer.readthedocs.io/) do [Buildozer](https://github.com/kivy/buildozer) para conhecer todas as opções disponíveis.
+  - ### Como exemplo, o comando 'buildozer -v android debug deploy run logcat' irá instalar e executar o aplicativo em seu dispositivo android conectado via USB ao desktop, além de armazenar uma cópia do APK no diretório 'build'. Esse comando também escreve todos os logs do Android em seu terminal.
