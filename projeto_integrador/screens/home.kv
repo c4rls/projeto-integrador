@@ -1,0 +1,107 @@
+#:kivy 2.0.0
+
+<Home>:
+    search_box: search_box
+    books_list: books_list
+
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+                    TopBar:
+                        title: 'Início'
+
+                    BoxLayout:
+                        canvas:
+                            Color:
+                                rgb: 0.95, 0.95, 0.95
+                            Rectangle:
+                                pos: self.pos
+                                size: self.size
+
+                        Widget:
+                            size_hint_x: 0.05 # 5% of width
+                        BoxLayout: # 90% of width
+                            orientation: 'vertical'
+                            Widget:
+                                size_hint_y: None
+                                height: 20
+                            Header:
+                            Widget:
+                                size_hint_y: None
+                                height: 20
+                            SearchBox:
+                                id: search_box
+                            BooksList:
+                                id: books_list
+                        Widget:
+                            size_hint_x: 0.05 # 5% of width
+
+        SideMenu:
+            id: side_menu
+
+
+<Header@BoxLayout>:
+    size_hint_y: None
+    height: 50
+    Label:
+        text: 'Projeto Integrador'
+        color: 0, 0, 0, 1
+        font_size: 30
+
+
+<SearchBox@BoxLayout>:
+    size_hint_y: None
+    height: 40
+    orientation: 'horizontal'
+    spacing: 5
+
+    TextInput:
+        id: search_input
+        hint_text: 'Termos da pesquisa'
+        font_size: 17
+        text_size: self.size
+        valign: 'middle'
+    Button:
+        text: 'Buscar'
+        size_hint_x: None
+        width: '100dp'
+        on_release: app.root.getBooks()
+
+<BooksList@BoxLayout>:
+    orientation: 'vertical'
+
+    BooksListHeader:
+        id: books_header
+    ScrollView:
+        BoxLayout:
+            id: books_list
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: 8
+
+<BooksListHeader@BoxLayout>:
+    orientation: 'vertical'
+    padding: 10
+    size_hint_y: None
+    height: 80
+    spacing: 5
+
+    found_books: 0
+
+    Label:
+        size_hint_y: None
+        height: 30
+        text: 'Resultados'
+        color: 0, 0, 0, 1
+        font_size: 23
+        text_size: self.size
+        halign: 'left'
+    Label:
+        text: str(root.found_books) + ' livros encontrados'
+        color: 0, 0, 0, 1
+        font_size: 16
+        text_size: self.size
+        halign: 'left'

@@ -1,0 +1,33 @@
+#:kivy 2.0.0
+
+<SideMenu>:
+    ContentNavigationDrawer:
+        orientation: 'vertical'
+        padding: '8dp'
+        spacing: '8dp'
+
+        BoxLayout:
+            orientation: 'vertical'
+
+            Widget:
+
+            DrawerList:
+                MDList:
+                    OneLineIconListItem:
+                        text: 'Início'
+
+                        IconLeftWidget:
+                            icon: 'home'
+
+                    OneLineIconListItem:
+                        text: 'Downloads'
+
+                        IconLeftWidget:
+                            icon: 'download'
+
+                    OneLineIconListItem:
+                        text: 'Configurações'
+
+                        IconLeftWidget:
+                            icon: 'account'
+            Widget:

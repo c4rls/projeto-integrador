@@ -16,6 +16,8 @@ O projeto é um aplicativo mobile chamado de Literabit, e tem como objetivo ser 
   - [Instalação a partir de pacotes pré-compilados](#pacotes-pré-compilados)
   - [Instalação a partir do código fonte](#instalando-a-partir-da-fonte)
 
+- [A fazer](#a-fazer)
+
 # Configuração do Ambiente
 
 Esse projeto utiliza o [Buildozer](https://github.com/kivy/buildozer) para empacotar o aplicativo para Android/IOS. No entanto, é necessário possuir um sistema Linux ou OSX para realizar esse processo. Se você possui um desses sistemas, acesse a [documentação do buildozer](https://buildozer.readthedocs.io/) e realize a instalação das dependências necessárias. O buildozer será instalado nos passos seguintes desse tutorial. 
@@ -72,3 +74,17 @@ Esses pacotes são compilados previamente a cada nova versão e estão prontos p
 ## Instalando a partir da fonte
 
 Faça a [configuração necessária](#configuração-do-ambiente) e siga os passos descritos na [seção de build](#building) para compilar o app a partir do código fonte. O pacote ficará disponível do diretório `build`. Use esse arquivo para instalar em seu dispositivo. 
+
+# A fazer
+
+- [x] Menu lateral.
+- [ ] Switch entre telas com o menu lateral.
+- [ ] Download dos livros e manter no armazenamento local. Manter o ID dos livros para consulta de informações.
+- [ ] Tela de livros baixados.
+- [ ] Modal com informações do livro.
+- [ ] Viewer de livros.
+- [x] Separar o arquivo 'projetointegrador.kv' e o código dos widgets em vários arquivos.
+- [ ] Evitar o congelamento da UI em tarefas pesadas.
+- [ ] Melhorar a UI.
+- [ ] Splash Screen e Ícone.
+- [ ] Diminuir o tamanho dos pacotes gerados.

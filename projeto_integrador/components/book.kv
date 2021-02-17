@@ -1,0 +1,37 @@
+#:kivy 2.0.0
+
+<Book>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: 100
+    padding: 10
+
+    title_content: ''
+    authors_content: ''
+    link_content: ''
+
+    canvas:
+        Color:
+            rgb: 0.4, 0.4, 0.4
+        Line:
+            width: 1
+            rectangle: self.x, self.y, self.width, self.height
+    BookField:
+        label_content: 'Título'
+        text_content: str(root.title_content)
+    BookField:
+        label_content: 'Autores'
+        text_content: str(root.authors_content)
+    BookField:
+        label_content: 'Link'
+        text_content: str(root.link_content)
+
+<BookField@Label>:
+    label_content: ''
+    text_content: ''
+
+    text: str(self.label_content) + ': ' + str(self.text_content)
+    color: 0, 0, 0, 1
+    text_size: self.size
+    font_size: 16
+    halign: 'left'
