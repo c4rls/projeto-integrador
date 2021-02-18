@@ -2,6 +2,8 @@ import kivy
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from screens.home import Home
+from screens.downloads import Downloads
+from kivy.uix.screenmanager import ScreenManager, CardTransition
 
 __version__ = '0.0.1'
 
@@ -12,7 +14,12 @@ kivy.require('1.11.1')
 
 class ProjetoIntegradorApp(MDApp):
     def build(self):
-        return Home()
+        screen_manager = ScreenManager(transition=CardTransition())
+
+        screen_manager.add_widget(Home(name='home'))
+        screen_manager.add_widget(Downloads(name='downloads'))
+
+        return screen_manager
 
 
 if __name__ == '__main__':

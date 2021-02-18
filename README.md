@@ -78,7 +78,7 @@ Faça a [configuração necessária](#configuração-do-ambiente) e siga os pass
 # A fazer
 
 - [x] Menu lateral.
-- [ ] Switch entre telas com o menu lateral.
+- [x] Switch entre telas com o menu lateral.
 - [ ] Download dos livros e manter no armazenamento local. Manter o ID dos livros para consulta de informações.
 - [ ] Tela de livros baixados.
 - [ ] Modal com informações do livro.

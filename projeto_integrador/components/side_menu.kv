@@ -15,15 +15,18 @@
                 MDList:
                     OneLineIconListItem:
                         text: 'Início'
+                        on_release: root.goToScreen('home')
 
                         IconLeftWidget:
                             icon: 'home'
 
                     OneLineIconListItem:
                         text: 'Downloads'
+                        on_release: root.goToScreen('downloads')
 
                         IconLeftWidget:
                             icon: 'download'
+
 
                     OneLineIconListItem:
                         text: 'Configurações'
