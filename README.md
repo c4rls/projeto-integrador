@@ -77,14 +77,21 @@ Faça a [configuração necessária](#configuração-do-ambiente) e siga os pass
 
 # A fazer
 
+- [x] Tela de Busca.
+- [x] Documentação.
+- [x] Compilação para APK.
 - [x] Menu lateral.
 - [x] Switch entre telas com o menu lateral.
-- [ ] Download dos livros e manter no armazenamento local. Manter o ID dos livros para consulta de informações.
-- [ ] Tela de livros baixados.
-- [ ] Modal com informações do livro.
-- [ ] Viewer de livros.
 - [x] Separar o arquivo 'projetointegrador.kv' e o código dos widgets em vários arquivos.
-- [ ] Evitar o congelamento da UI em tarefas pesadas.
-- [ ] Melhorar a UI.
+- [x] Download dos livros para o armazenamento local.
+- [x] Tela de livros baixados.
+- [x] Box com informações do livro e botões de ação (baixar, ler, remover...).
+- [ ] Viewer de livros.
 - [ ] Splash Screen e Ícone.
+- [ ] Evitar o congelamento da UI em tarefas pesadas e mostrar uma indicação visual de 'loading'.
 - [ ] Diminuir o tamanho dos pacotes gerados.
+- [ ] Melhorar/adicionar a documentação de contribuição, arquitetura, design e padrões. Adicionar screenshots do app.
+- [ ] Melhorar a UI.
+- [ ] Melhorar o sistema de busca para trabalhar com filtros.
+- [ ] Adicionar uma licença de software.
+- [ ] Adicionar uma página/seção com informação do app (escopo, licença, tecnologias utilizadas, autores e etc.).

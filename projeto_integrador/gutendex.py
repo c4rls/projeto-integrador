@@ -24,7 +24,7 @@ def transform_results_into_books(results) -> List[Book]:
     return books
 
 
-def get_books_by_ids(*book_ids: Union[int, str]) -> List[Book]:
+def get_books_by_ids(book_ids: Union[int, str]) -> List[Book]:
     ids = ','.join([str(x) for x in book_ids])
     url = gutendex_url + '/books?ids=' + ids
     books = []

@@ -4,6 +4,7 @@ from kivy.core.window import Window
 from screens.home import Home
 from screens.downloads import Downloads
 from kivy.uix.screenmanager import ScreenManager, CardTransition
+import os
 
 __version__ = '0.0.1'
 
@@ -24,4 +25,8 @@ class ProjetoIntegradorApp(MDApp):
 
 if __name__ == '__main__':
     app = ProjetoIntegradorApp()
+
+    if 'epub_downloads' not in os.listdir(app.user_data_dir):
+        os.mkdir(app.user_data_dir + '/epub_downloads')
+
     app.run()

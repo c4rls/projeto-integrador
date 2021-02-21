@@ -1,0 +1,68 @@
+#:kivy 2.0.0
+
+<BookCard>:
+    orientation: 'vertical'
+    size_hint_y: None
+    height: header.height + content.height
+
+    canvas:
+        Color:
+            rgb: 0.5, 0.5, 0.5
+        Line:
+            width: 0.3
+            rectangle: self.x, self.y, self.width, self.height
+
+    BookCardHeader:
+        id: header
+        orientation: 'vertical'
+        size_hint_y: None
+        padding: 10
+        height: max(label_title.height + 2 * self.padding[0], 70)
+
+        on_release: root.open_or_close_card()
+
+        canvas:
+            Color:
+                rgb: 0.5, 0.5, 0.5
+            Line:
+                width: 0.3
+                rectangle: self.x, self.y, self.width, self.height
+
+        MDLabel:
+            id: label_title
+            text: root.title_content
+            font_style: 'H6'
+            theme_text_color: 'Primary'
+            valign: 'middle'
+            size: self.texture_size
+
+    BoxLayout:
+        id: content
+        size_hint_y: None
+        size: self.minimum_size
+
+<BookCardHeader@ButtonBehavior+BoxLayout>:
+
+<BookCardContent>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+    size_hint_y: None
+    size: self.minimum_size
+
+    BoxLayout:
+        id: info
+        orientation: 'vertical'
+        size_hint_y: None
+
+    BoxLayout:
+        id: actions
+        orientation: 'vertical'
+        spacing: 10
+        size_hint_y: None
+        size: self.minimum_size
+
+<BookCardActionButton>:
+    font_size: 18
+    text_color: 1, 1, 1, 1
+    size_hint_x: 1

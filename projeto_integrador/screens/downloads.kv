@@ -11,8 +11,17 @@
                         title: 'Downloads'
 
                     BoxLayout:
-                        Button:
-                            text: 'Downloads'
+                        orientation: 'vertical'
+
+                        BoxLayout:
+                            ScrollView:
+                                BoxLayout:
+                                    id: books_list
+                                    orientation: 'vertical'
+                                    size_hint_y: None
+                                    height: self.minimum_height
+                                    spacing: '15dp'
+                                    padding: '5dp'
 
         SideMenu:
             id: side_menu

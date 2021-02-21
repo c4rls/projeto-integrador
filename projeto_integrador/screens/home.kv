@@ -74,13 +74,15 @@
 
     BooksListHeader:
         id: books_header
+
     ScrollView:
         BoxLayout:
             id: books_list
             orientation: 'vertical'
             size_hint_y: None
             height: self.minimum_height
-            spacing: 8
+            spacing: '15dp'
+            padding: '5dp'
 
 <BooksListHeader@BoxLayout>:
     orientation: 'vertical'
