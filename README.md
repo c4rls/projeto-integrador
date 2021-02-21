@@ -87,7 +87,7 @@ Faça a [configuração necessária](#configuração-do-ambiente) e siga os pass
 - [x] Tela de livros baixados.
 - [x] Box com informações do livro e botões de ação (baixar, ler, remover...).
 - [ ] Viewer de livros.
-- [ ] Splash Screen e Ícone.
+- [x] Splash Screen e Ícone.
 - [ ] Evitar o congelamento da UI em tarefas pesadas e mostrar uma indicação visual de 'loading'.
 - [ ] Diminuir o tamanho dos pacotes gerados.
 - [ ] Melhorar/adicionar a documentação de contribuição, arquitetura, design e padrões. Adicionar screenshots do app.
