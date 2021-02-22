@@ -4,6 +4,8 @@ from components.book_card import BookCard
 from components.top_bar import TopBar
 from components.side_menu import SideMenu
 from kivymd.uix.screen import Screen
+from kivymd.uix.label import MDLabel
+from kivymd.uix.button import MDFlatButton
 
 
 Builder.load_file('screens/home.kv')
@@ -11,16 +13,21 @@ Builder.load_file('screens/home.kv')
 
 class Home(Screen):
     def getBooks(self):
-        terms = self.search_box.ids.search_input.text.strip()
+        search_box = self.ids.search_box
+        books_list = self.ids.books_list
+
+        terms = search_box.ids.input.text.strip()
         if not terms:
+            search_box.ids.input.text = ''
             return
 
-        self.books_list.ids.books_list.clear_widgets()
         books = search_books(terms)
+        books_list.ids.container.clear_widgets()
 
         for book in books:
             book_widget = BookCard(book=book)
-            self.books_list.ids.books_list.add_widget(book_widget)
+            books_list.ids.container.add_widget(book_widget)
 
-        self.search_box.ids.search_input.text = ''
-        self.books_list.ids.books_header.found_books = len(books)
+        search_box.ids.input.text = ''
+        books_list.ids.found_books.text = str(len(
+            books)) + ' livros encontrados' if len(books) > 0 else 'Nenhum livro encontrado'

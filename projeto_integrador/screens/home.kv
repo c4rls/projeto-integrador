@@ -1,109 +1,81 @@
 #:kivy 2.0.0
 
 <Home>:
-    search_box: search_box
-    books_list: books_list
-
     NavigationLayout:
         ScreenManager:
             Screen:
                 BoxLayout:
                     orientation: 'vertical'
+
                     TopBar:
                         title: 'Início'
 
                     BoxLayout:
-                        canvas:
-                            Color:
-                                rgb: 0.95, 0.95, 0.95
-                            Rectangle:
-                                pos: self.pos
-                                size: self.size
 
                         Widget:
-                            size_hint_x: 0.05 # 5% of width
+                            size_hint_x: 0.05
+
                         BoxLayout: # 90% of width
                             orientation: 'vertical'
+
                             Widget:
-                                size_hint_y: None
-                                height: 20
-                            Header:
-                            Widget:
-                                size_hint_y: None
-                                height: 20
+                                size_hint_y: 0.1
                             SearchBox:
                                 id: search_box
                             BooksList:
                                 id: books_list
+
                         Widget:
-                            size_hint_x: 0.05 # 5% of width
+                            size_hint_x: 0.05
 
         SideMenu:
             id: side_menu
 
 
-<Header@BoxLayout>:
-    size_hint_y: None
-    height: 50
-    Label:
-        text: 'Projeto Integrador'
-        color: 0, 0, 0, 1
-        font_size: 30
-
-
 <SearchBox@BoxLayout>:
-    size_hint_y: None
-    height: 40
     orientation: 'horizontal'
-    spacing: 5
+    size_hint_y: None
+    size: self.minimum_size
+    spacing: '10dp'
 
     TextInput:
-        id: search_input
-        hint_text: 'Termos da pesquisa'
-        font_size: 17
+        id: input
+        hint_text: 'Pesquisar por...'
+        hint_text_color: 0, 0, 0
+        font_size: '18dp'
         text_size: self.size
-        valign: 'middle'
-    Button:
+        background_color: 1, 1, 1, 1
+        cursor_color: 0, 0, 0
+        foreground_color: 0, 0, 0
+        multiline: False
+
+    MDFlatButton:
         text: 'Buscar'
-        size_hint_x: None
-        width: '100dp'
+        font_size: '14dp'
+        text_color: 1, 1, 1
+        md_bg_color: 0.12941176470588237, 0.5882352941176471, 0.9529411764705882, 1
         on_release: app.root.current_screen.getBooks()
 
 <BooksList@BoxLayout>:
     orientation: 'vertical'
 
-    BooksListHeader:
-        id: books_header
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+
+        MDLabel:
+            id: found_books
+            text: ''
+            font_style: 'H6'
+            theme_text_color: 'Primary'
+            size: self.texture_size
+            halign: 'center'
 
     ScrollView:
         BoxLayout:
-            id: books_list
+            id: container
             orientation: 'vertical'
             size_hint_y: None
             height: self.minimum_height
-            spacing: '15dp'
-            padding: '5dp'
-
-<BooksListHeader@BoxLayout>:
-    orientation: 'vertical'
-    padding: 10
-    size_hint_y: None
-    height: 80
-    spacing: 5
-
-    found_books: 0
-
-    Label:
-        size_hint_y: None
-        height: 30
-        text: 'Resultados'
-        color: 0, 0, 0, 1
-        font_size: 23
-        text_size: self.size
-        halign: 'left'
-    Label:
-        text: str(root.found_books) + ' livros encontrados'
-        color: 0, 0, 0, 1
-        font_size: 16
-        text_size: self.size
-        halign: 'left'
+            spacing: '20dp'
+            padding: '2dp'
