@@ -1,4 +1,5 @@
 from kivy.lang import Builder
+from kivy.clock import mainthread
 from kivymd.uix.card import MDCard
 from kivymd.uix.label import MDLabel
 from kivy.properties import StringProperty
@@ -13,11 +14,18 @@ Builder.load_file('components/book_card.kv')
 class BookCard(MDCard):
     title_content = StringProperty('')
 
-    def __init__(self, book=None, **kwargs):
+    def __init__(self,
+                 book=None,
+                 download_button_func=None,
+                 remove_button_func=None,
+                 **kwargs):
+
         super(BookCard, self).__init__(**kwargs)
         self.title_content = book.title
-        self.is_opened = False
         self.book = book
+        self.is_opened = False
+        self.download_button_func = download_button_func
+        self.remove_button_func = remove_button_func
 
     def open_or_close_card(self):
         if self.is_opened:
@@ -28,35 +36,43 @@ class BookCard(MDCard):
         self.is_opened = True
         card_content = BookCardContent()
 
-        card_content.ids.info.add_widget(
-            MDLabel(text='Autores: ' + ' - '.join([x.name for x in self.book.authors])))
-        card_content.ids.info.add_widget(
-            MDLabel(text='Download em ePUB: ' + 'Sim' if self.book.epub_is_avaliable() else 'Não'))
+        epub_is_avaliable = self.book.epub_is_avaliable()
+        epub_is_downloaded = self.book.epub_is_downloaded()
 
-        card_content.ids.actions.add_widget(
-            BookCardActionButton(text='Ler', on_release=lambda pos=None: self.read_book()))
-        card_content.ids.actions.add_widget(
-            BookCardActionButton(text='Baixar', on_release=lambda pos=None: self.download_book()))
-        card_content.ids.actions.add_widget(
-            BookCardActionButton(text='Remover', on_release=lambda pos=None: self.remove_book()))
+        card_content.ids.authors.text = 'Autores: ' + \
+            ' - '.join([x.name for x in self.book.authors])
+        card_content.ids.epub_download.text = 'Download em ePUB: ' + \
+            'Sim' if epub_is_avaliable else 'Não'
+
+        card_content.ids.download_button.disabled = True if not epub_is_avaliable else epub_is_downloaded
+        card_content.ids.download_button.on_release = self.download_book
+
+        card_content.ids.remove_button.disabled = True if not epub_is_avaliable else not epub_is_downloaded
+        card_content.ids.remove_button.on_release = self.remove_book
 
         self.ids.content.add_widget(card_content)
 
     def download_book(self):
-        self.book.epub_download()
+        @mainthread
+        def func():
+            card_content = self.ids.content.children[0]
+
+            card_content.ids.download_button.disabled = True
+            card_content.ids.remove_button.disabled = False
+
+        self.download_button_func(book=self.book, func=func)
 
     def remove_book(self):
-        self.book.epub_remove()
+        @mainthread
+        def func():
+            card_content = self.ids.content.children[0]
 
-    def read_book(self):
-        pass
+            card_content.ids.download_button.disabled = False
+            card_content.ids.remove_button.disabled = True
+
+        self.remove_button_func(book=self.book, func=func)
 
 
 class BookCardContent(BoxLayout):
-    pass
-
-
-class BookCardActionButton(MDFlatButton):
-    def __init__(self, md_bg_color=(0, 0.38, 0.35, 1), **kwargs):
-        super(BookCardActionButton, self).__init__(**kwargs)
-        self.md_bg_color = md_bg_color
+    def __init__(self, **kwargs):
+        super(BookCardContent, self).__init__(**kwargs)

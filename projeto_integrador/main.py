@@ -1,12 +1,12 @@
+import os
 import kivy
-from kivymd.app import MDApp
 from kivy.core.window import Window
+from kivymd.app import MDApp
 from screens.home import Home
 from screens.downloads import Downloads
 from kivy.uix.screenmanager import ScreenManager, CardTransition
-import os
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 kivy.require('1.11.1')
 

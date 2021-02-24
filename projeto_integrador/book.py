@@ -44,7 +44,7 @@ class Book:
     Public Domain: {'yes' if not self.copyright else 'no'},
     EPUB Download: {'yes' if self.epub_is_avaliable() else 'no'})>'''
 
-    def epub_is_avaliable(self) -> bool:
+    def epub_is_avaliable(self):
         epub_formats = ['application/epub+zip']
         formats = self.formats.keys()
 
@@ -89,3 +89,14 @@ class Book:
                 print('Removendo o livro ' + self.to_string())
                 os.remove(app.user_data_dir + '/epub_downloads/' + file_name)
                 print('O livro ' + self.to_string() + ' foi removido')
+
+    def epub_is_downloaded(self):
+        directory = App.get_running_app().user_data_dir
+        file_name = self.id + '.epub'
+
+        if not 'epub_downloads' in os.listdir(directory):
+            return False
+
+        return True \
+            if file_name in os.listdir(directory + '/epub_downloads') \
+            else False
