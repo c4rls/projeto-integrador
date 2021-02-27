@@ -1,0 +1,60 @@
+#:kivy 2.0.0
+
+<EBookViewer>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        BoxLayout:
+            size_hint: 1, 0.11
+            padding: '10dp'
+            canvas.before:
+                Color:
+                    rgba: 0.22, 0.28, 0.31, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            BoxLayout:
+                TopBarActionButton:
+                    icon: 'arrow-left'
+                    on_release: root.go_to_previous_screen()
+
+            BoxLayout:
+                MDLabel:
+                    text: 'Pág. ' + str(root.current_page)
+                    font_style: 'Subtitle2'
+                    color: 1, 1, 1, 1
+                    halign: 'right'
+                    padding: 10, 10
+
+                TopBarActionButton:
+                    icon: 'arrow-left-bold'
+                    disabled: True if root.current_page == 1 else False
+                    on_release: root.go_to_previous_page()
+                TopBarActionButton:
+                    icon: 'arrow-right-bold'
+                    disabled: True if root.current_page == root.max_page else False
+                    on_release: root.go_to_next_page()
+
+
+        BoxLayout:
+            orientation: 'vertical'
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+<TopBarActionButton@ButtonBehavior+BoxLayout>:
+    size_hint: None, 1
+    width: self.height
+
+    icon: ''
+
+    MDIcon:
+        valign: 'center'
+        halign: 'center'
+        icon: root.icon
+        theme_text_color: 'Custom'
+        text_color: 1, 1, 1, 1

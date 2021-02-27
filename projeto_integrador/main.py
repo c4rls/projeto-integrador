@@ -4,6 +4,7 @@ from kivy.core.window import Window
 from kivymd.app import MDApp
 from screens.home import Home
 from screens.downloads import Downloads
+from screens.ebook_viewer import EBookViewer
 from kivy.uix.screenmanager import ScreenManager, CardTransition
 
 __version__ = '0.0.2'
@@ -19,6 +20,7 @@ class ProjetoIntegradorApp(MDApp):
 
         screen_manager.add_widget(Home(name='home'))
         screen_manager.add_widget(Downloads(name='downloads'))
+        screen_manager.add_widget(EBookViewer(name='ebook_viewer'))
 
         return screen_manager
 

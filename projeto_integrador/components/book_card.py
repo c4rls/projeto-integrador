@@ -1,3 +1,4 @@
+from kivy.app import App
 from kivy.lang import Builder
 from kivy.clock import mainthread
 from kivymd.uix.card import MDCard
@@ -44,6 +45,9 @@ class BookCard(MDCard):
         card_content.ids.epub_download.text = 'Download em ePUB: ' + \
             'Sim' if epub_is_avaliable else 'Não'
 
+        card_content.ids.read_button.disabled = True if not epub_is_downloaded else False
+        card_content.ids.read_button.on_release = self.read_book
+
         card_content.ids.download_button.disabled = True if not epub_is_avaliable else epub_is_downloaded
         card_content.ids.download_button.on_release = self.download_book
 
@@ -52,11 +56,21 @@ class BookCard(MDCard):
 
         self.ids.content.add_widget(card_content)
 
+    def read_book(self):
+        app = App.get_running_app()
+
+        ebook_viewer = app.root.get_screen('ebook_viewer')
+        ebook_viewer.set_book(self.book)
+        ebook_viewer.set_previous_screen(app.root.current)
+
+        app.root.current = 'ebook_viewer'
+
     def download_book(self):
         @mainthread
         def func():
             card_content = self.ids.content.children[0]
 
+            card_content.ids.read_button.disabled = False
             card_content.ids.download_button.disabled = True
             card_content.ids.remove_button.disabled = False
 
@@ -67,6 +81,7 @@ class BookCard(MDCard):
         def func():
             card_content = self.ids.content.children[0]
 
+            card_content.ids.read_button.disabled = True
             card_content.ids.download_button.disabled = False
             card_content.ids.remove_button.disabled = True
 
