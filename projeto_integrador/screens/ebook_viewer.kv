@@ -31,6 +31,7 @@
                     icon: 'arrow-left-bold'
                     disabled: True if root.current_page == 1 else False
                     on_release: root.go_to_previous_page()
+
                 TopBarActionButton:
                     icon: 'arrow-right-bold'
                     disabled: True if root.current_page == root.max_page else False
@@ -38,10 +39,11 @@
 
 
         BoxLayout:
+            id: container
             orientation: 'vertical'
             canvas:
                 Color:
-                    rgba: 1, 1, 1, 1
+                    rgba: 0.93, 0.93, 0.87, 1
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -58,3 +60,36 @@
         icon: root.icon
         theme_text_color: 'Custom'
         text_color: 1, 1, 1, 1
+
+<EBookViewerPage>:
+    orientation: 'vertical'
+
+    ScrollView:
+        bar_color: 0.22, 0.28, 0.31, 1
+        bar_inactive_color: 0.22, 0.28, 0.31, 0.7
+        bar_width: 4
+        aways_overscroll: False
+
+        BoxLayout:
+            id: container
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            padding: '15dp'
+
+<EBookViewerTitle>:
+    size_hint_y: None
+    size: self.texture_size
+    font_style: 'H5'
+    bold: True
+
+<EBookViewerParagraph>:
+    size_hint_y: None
+    size: self.texture_size
+    font_style: 'Subtitle1'
+    halign: 'justify'
+
+<EBookViewerSeparator>:
+    size_hint_y: None
+
+    height: 0 if self.multiplier < 0 else 10 * self.multiplier
