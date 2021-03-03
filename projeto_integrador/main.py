@@ -7,7 +7,7 @@ from screens.downloads import Downloads
 from screens.ebook_viewer import EBookViewer
 from kivy.uix.screenmanager import ScreenManager, CardTransition
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 
 kivy.require('1.11.1')
 
