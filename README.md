@@ -86,12 +86,22 @@ Faça a [configuração necessária](#configuração-do-ambiente) e siga os pass
 - [x] Download dos livros para o armazenamento local.
 - [x] Tela de livros baixados.
 - [x] Box com informações do livro e botões de ação (baixar, ler, remover...).
-- [ ] Viewer de livros.
+- [x] Viewer de livros.
 - [x] Splash Screen e Ícone.
 - [x] Evitar o congelamento da UI em tarefas pesadas e mostrar uma indicação visual de 'loading'.
+- [ ] Melhorar o visualizador de livros.
+    - [ ] Fazer o tratamento do conteúdo em background.
+    - [ ] Função de 'ir para a página'.
+    - [ ] Mostrar a capa.
+    - [ ] Sumário.
+    - [ ] Abrir na última página lida.
+- [ ] Cache dos metadados do livro.
+- [ ] Cache do conteúdo tratado do livro.
+- [ ] Coletar e apresentar informações do uso do app.
 - [ ] Diminuir o tamanho dos pacotes gerados.
 - [ ] Melhorar/adicionar a documentação de contribuição, arquitetura, design e padrões. Adicionar screenshots do app.
 - [ ] Melhorar a UI.
 - [ ] Melhorar o sistema de busca para trabalhar com filtros.
 - [ ] Adicionar uma licença de software.
 - [ ] Adicionar uma página/seção com informação do app (escopo, licença, tecnologias utilizadas, autores e etc.).
+- [ ] Testes automatizados.

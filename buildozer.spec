@@ -36,7 +36,7 @@ version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3, appdirs==1.4.4, certifi==2020.12.5, chardet==4.0.0, colorama==0.4.4, distlib==0.3.1, docutils==0.16, filelock==3.0.12, idna==2.10, importlib-metadata==3.1.1, Jinja2==2.11.2, kivy==2.0.0, Kivy-Garden==0.1.4, MarkupSafe==1.1.1, pep517==0.6.0, pexpect==4.8.0, ptyprocess==0.6.0, pycodestyle==2.6.0, Pygments==2.8.0, pytoml==0.1.21, requests==2.25.1, sh==1.14.1, six==1.15.0, toml==0.10.2, urllib3==1.26.3, zipp==3.4.0, kivymd==0.104.1
+requirements = python3, appdirs==1.4.4, certifi==2020.12.5, chardet==4.0.0, colorama==0.4.4, distlib==0.3.1, docutils==0.16, filelock==3.0.12, idna==2.10, importlib-metadata==3.1.1, Jinja2==2.11.2, kivy==2.0.0, Kivy-Garden==0.1.4, MarkupSafe==1.1.1, pep517==0.6.0, pexpect==4.8.0, ptyprocess==0.6.0, pycodestyle==2.6.0, Pygments==2.8.0, pytoml==0.1.21, requests==2.25.1, sh==1.14.1, six==1.15.0, toml==0.10.2, urllib3==1.26.3, zipp==3.4.0, kivymd==0.104.1, beautifulsoup4==4.9.3, EbookLib==0.17.1, lxml==4.6.2, soupsieve==2.2
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
