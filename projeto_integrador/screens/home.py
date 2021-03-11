@@ -1,4 +1,4 @@
-import threading
+from threading import Thread, Event
 from kivy.lang import Builder
 from kivy.clock import mainthread
 from gutendex import search_books
@@ -18,7 +18,14 @@ Builder.load_file('screens/home.kv')
 class Home(Screen):
     modal_spinner: ModalView = None
 
-    def get_books(self):
+    def __init__(self, **kwargs):
+        super(Home, self).__init__(**kwargs)
+        self._stop_event = Event()
+
+    def stop(self):
+        self._stop_event.set()
+
+    def _get_books(self):
         search_box = self.ids.search_box
         books_list = self.ids.books_list
 
@@ -34,14 +41,14 @@ class Home(Screen):
 
         def thread_func():
             books = search_books(terms)
-            self.update_books(books)
+            self._update_books(books)
 
         modal_spinner.open()
 
-        threading.Thread(target=thread_func).start()
+        Thread(target=thread_func).start()
 
     @mainthread
-    def update_books(self, books):
+    def _update_books(self, books):
         search_box = self.ids.search_box
         books_list = self.ids.books_list
 
@@ -50,8 +57,8 @@ class Home(Screen):
         for book in books:
             book_widget = BookCard(
                 book=book,
-                download_button_func=self.download_book,
-                remove_button_func=self.remove_book)
+                download_button_func=self._download_book,
+                remove_button_func=self._remove_book)
             books_list.ids.container.add_widget(book_widget)
 
         search_box.ids.input.text = ''
@@ -60,7 +67,7 @@ class Home(Screen):
 
         self.modal_spinner.dismiss()
 
-    def download_book(self, book=None, func=None):
+    def _download_book(self, book=None, func=None):
         modal_spinner = ModalView(size_hint=(None, None), size=(
             100, 100), auto_dismiss=False, background='', background_color=(1, 1, 1, 0))
         modal_spinner.add_widget(MDSpinner(size_hint=(0.7, 0.7), active=True))
@@ -77,9 +84,9 @@ class Home(Screen):
             func()
             modal_spinner.dismiss()
 
-        threading.Thread(target=thread_func).start()
+        Thread(target=thread_func).start()
 
-    def remove_book(self, book=None, func=None):
+    def _remove_book(self, book=None, func=None):
         modal_spinner = ModalView(size_hint=(None, None), size=(
             100, 100), auto_dismiss=False, background='', background_color=(1, 1, 1, 0))
         modal_spinner.add_widget(MDSpinner(size_hint=(0.7, 0.7), active=True))
@@ -96,4 +103,4 @@ class Home(Screen):
             func()
             modal_spinner.dismiss()
 
-        threading.Thread(target=thread_func).start()
+        Thread(target=thread_func).start()

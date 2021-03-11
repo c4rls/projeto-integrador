@@ -62,6 +62,8 @@ class BookCard(MDCard):
         ebook_viewer = app.root.get_screen('ebook_viewer')
         ebook_viewer.set_book(self.book)
         ebook_viewer.set_previous_screen(app.root.current)
+        ebook_viewer.get_pages()
+        ebook_viewer.show_page(0)
 
         app.root.current = 'ebook_viewer'
 

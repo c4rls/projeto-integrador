@@ -17,7 +17,7 @@
             BoxLayout:
                 TopBarActionButton:
                     icon: 'arrow-left'
-                    on_release: root.go_to_previous_screen()
+                    on_release: root._go_to_previous_screen()
 
             BoxLayout:
                 MDLabel:
@@ -30,12 +30,12 @@
                 TopBarActionButton:
                     icon: 'arrow-left-bold'
                     disabled: True if root.current_page == 1 else False
-                    on_release: root.go_to_previous_page()
+                    on_release: root._go_to_previous_page()
 
                 TopBarActionButton:
                     icon: 'arrow-right-bold'
                     disabled: True if root.current_page == root.max_page else False
-                    on_release: root.go_to_next_page()
+                    on_release: root._go_to_next_page()
 
 
         BoxLayout:
@@ -92,4 +92,4 @@
 <EBookViewerSeparator>:
     size_hint_y: None
 
-    height: 0 if self.multiplier < 0 else 10 * self.multiplier
+    height: 0 if self.multiplier < 1 else 10 * self.multiplier

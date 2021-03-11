@@ -15,6 +15,14 @@ kivy.require('1.11.1')
 
 
 class ProjetoIntegradorApp(MDApp):
+    def on_stop(self):
+        self._stop_jobs()
+
+    def _stop_jobs(self):
+        self.root.get_screen('home').stop()
+        self.root.get_screen('downloads').stop()
+        self.root.get_screen('ebook_viewer').stop()
+
     def build(self):
         screen_manager = ScreenManager(transition=CardTransition())
 
